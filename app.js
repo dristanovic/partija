@@ -11,18 +11,19 @@ async function inicijalizuj() {
   postaviPoziciju((await klijent.from("iks_oks").select("pozicija").eq("id", kod).limit(1).single()).data.pozicija);
 
   const maliKvadrati = document.querySelectorAll(".mali.kvadrat");
-  // svim malim kvadratima dodeljujemo funkciju koja ce obradjivati klik
+  // svim malim kvadratima dodeljujemo funkciju koja će obrađivati klik
   maliKvadrati.forEach((maliKvadrat) => {
     maliKvadrat.addEventListener("click", async function klik() {
       if (maliKvadrat.parentElement.classList.contains("potez-" + potez)) {
         maliKvadrat.classList.add(potez);
-        maliKvadrat.removeEventListener("click", klik); // kada kliknemo na kvadrat ne mozemo ga vise koristiti
         proveriKvadrat(maliKvadrat, potez);
         proveriKvadrat(maliKvadrat.parentElement, potez);
         resetujKvadrate();
 
         // proveravamo da li je partija gotova, ako nije aktiviramo sledece velike kvadrate
         if (!tabla.classList.contains("iks") && !tabla.classList.contains("oks") && document.querySelectorAll(".veliki.kvadrat.iks , .veliki.kvadrat.oks").length !== 9) sledeciKvadrati(maliKvadrat);
+        maliKvadrat.removeEventListener("click", klik); // kada kliknemo na kvadrat ne možemo ga više koristiti
+        
         const { data, error } = await klijent.rpc("napravi_potez", { id: kod, nova_pozicija: pozicija() });
       }
     });
@@ -47,11 +48,8 @@ const changes = klijent
 function aktivirajKvadrat(kvadrat, potez) {
   kvadrat.classList.add("potez-" + potez);
 }
-
 function proveriKvadrat(kvadrat, potez) {
-  const kvadrati = Array.prototype.filter.call(kvadrat.parentElement.children, (x) => {
-    return x.matches(".kvadrat." + potez);
-  });
+  const kvadrati = Array.prototype.filter.call(kvadrat.parentElement.children, (x) => { return x.matches(".kvadrat." + potez); });
 
   if (brojKvadrata(kvadrati, ".gore") === 3) kvadrat.parentElement.classList.add(potez);
   else if (brojKvadrata(kvadrati, ".centar") === 3) kvadrat.parentElement.classList.add(potez);
@@ -63,9 +61,7 @@ function proveriKvadrat(kvadrat, potez) {
   else if (brojKvadrata(kvadrati, ".gore.desno, .centar.sredina, .dole.levo") === 3) kvadrat.parentElement.classList.add(potez);
 
   function brojKvadrata(kvadrati, selektor) {
-    return Array.prototype.filter.call(kvadrati, (x) => {
-      return x.matches(selektor);
-    }).length;
+    return Array.prototype.filter.call(kvadrati, (x) => { return x.matches(selektor); }).length; // vraća dužinu podskupa elemenata koji se podudaraju sa dati selektorom
   }
 }
 function resetujKvadrate() {
