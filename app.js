@@ -49,14 +49,15 @@ function aktivirajKvadrat(kvadrat, potez) {
   kvadrat.classList.add("potez-" + potez);
 }
 function proveriKvadrat(kvadrat, potez) {
-  if (kvadrat.querySelectorAll(":scope > .gore").length === 3) kvadrat.parentElement.classList.add(potez);
-  else if (kvadrat.querySelectorAll(":scope > .centar").length === 3) kvadrat.parentElement.classList.add(potez);
-  else if (kvadrat.querySelectorAll(":scope > .dole").length === 3) kvadrat.parentElement.classList.add(potez);
-  else if (kvadrat.querySelectorAll(":scope > .levo").length === 3) kvadrat.parentElement.classList.add(potez);
-  else if (kvadrat.querySelectorAll(":scope > .sredina").length === 3) kvadrat.parentElement.classList.add(potez);
-  else if (kvadrat.querySelectorAll(":scope > .desno").length === 3) kvadrat.parentElement.classList.add(potez);
-  else if (kvadrat.querySelectorAll(":scope > .gore.levo, :scope > .centar.sredina, :scope > .dole.desno").length === 3) kvadrat.parentElement.classList.add(potez);
-  else if (kvadrat.querySelectorAll(":scope > .gore.desno, :scope > .centar.sredina, :scope > .dole.levo").length === 3) kvadrat.parentElement.classList.add(potez);
+  kvadrat = kvadrat.parentElement;
+  if (kvadrat.querySelectorAll(":scope > .gore." + potez).length === 3) kvadrat.classList.add(potez);
+  else if (kvadrat.querySelectorAll(":scope > .centar." + potez).length === 3) kvadrat.classList.add(potez);
+  else if (kvadrat.querySelectorAll(":scope > .dole." + potez).length === 3) kvadrat.classList.add(potez);
+  else if (kvadrat.querySelectorAll(":scope > .levo." + potez).length === 3) kvadrat.classList.add(potez);
+  else if (kvadrat.querySelectorAll(":scope > .sredina." + potez).length === 3) kvadrat.classList.add(potez);
+  else if (kvadrat.querySelectorAll(":scope > .desno." + potez).length === 3) kvadrat.classList.add(potez);
+  else if (kvadrat.querySelectorAll(`:scope > .gore.levo.${potez}, :scope > .centar.sredina.${potez}, :scope > .dole.desno.${potez}`).length === 3) kvadrat.classList.add(potez);
+  else if (kvadrat.querySelectorAll(`:scope > .gore.desno.${potez}, :scope > .centar.sredina.${potez}, :scope > .dole.levo.${potez}`).length === 3) kvadrat.classList.add(potez);
 }
 function resetujKvadrate() {
   document.querySelectorAll(".potez-iks, .potez-oks").forEach((kvadrat) => {
