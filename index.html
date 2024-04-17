@@ -5,111 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Велики икс окс</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   </head>
 
   <body>
+    <nav>
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" onclick="kreirajQR();">
+        <path d="m24 26h2v2h-2z" transform="matrix(0 -1 1 0 -2 52)" />
+        <path d="m18 22h2v2h-2z" transform="matrix(0 -1 1 0 -4 42)" />
+        <path d="m18 30h4v-2h-2v-2h-2z" />
+        <path d="m24.9999 23h4v2h-4z" transform="matrix(0 -1 1 0 2.9999 50.9999)" />
+        <path d="m28 26h2v4h-4v-2h2z" />
+        <path d="m26 20v-2h4v4h-2v-2z" />
+        <path d="m24 20h-2v4h-2v2h4z" />
+        <path d="m19 17h2v4h-2z" transform="matrix(0 -1 1 0 1 39)" />
+        <path d="m6 22h4v4h-4z" />
+        <path d="m14 30h-12v-12h12zm-10-2h8v-8h-8z" />
+        <path d="m22 6h4v4h-4z" />
+        <path d="m30 14h-12v-12h12zm-10-2h8v-8h-8z" />
+        <path d="m6 6h4v4h-4z" />
+        <path d="m14 14h-12v-12h12zm-10-2h8v-8h-8z" />
+        <path d="m0 0h32v32h-32z" fill="none" />
+      </svg>
+      <label>KOD:<input type="text" size="1" readonly placeholder="KOD partije" /></label>
+    </nav>
     <main id="tabla">
-      <div class="veliki kvadrat gore levo">
-        <div class="mali kvadrat gore levo"></div>
-        <div class="mali kvadrat gore sredina"></div>
-        <div class="mali kvadrat gore desno"></div>
-        <div class="mali kvadrat centar levo"></div>
-        <div class="mali kvadrat centar sredina"></div>
-        <div class="mali kvadrat centar desno"></div>
-        <div class="mali kvadrat dole levo"></div>
-        <div class="mali kvadrat dole sredina"></div>
-        <div class="mali kvadrat dole desno"></div>
+      <div class="veliki kvadrat gore levo" data-index="0">
+        <div class="mali kvadrat gore levo" data-index="0"></div>
+        <div class="mali kvadrat gore sredina" data-index="1"></div>
+        <div class="mali kvadrat gore desno" data-index="2"></div>
+        <div class="mali kvadrat centar levo" data-index="3"></div>
+        <div class="mali kvadrat centar sredina" data-index="4"></div>
+        <div class="mali kvadrat centar desno" data-index="5"></div>
+        <div class="mali kvadrat dole levo" data-index="6"></div>
+        <div class="mali kvadrat dole sredina" data-index="7"></div>
+        <div class="mali kvadrat dole desno" data-index="8"></div>
       </div>
-      <div class="veliki kvadrat gore sredina">
-        <div class="mali kvadrat gore levo"></div>
-        <div class="mali kvadrat gore sredina"></div>
-        <div class="mali kvadrat gore desno"></div>
-        <div class="mali kvadrat centar levo"></div>
-        <div class="mali kvadrat centar sredina"></div>
-        <div class="mali kvadrat centar desno"></div>
-        <div class="mali kvadrat dole levo"></div>
-        <div class="mali kvadrat dole sredina"></div>
-        <div class="mali kvadrat dole desno"></div>
+      <div class="veliki kvadrat gore sredina" data-index="1">
+        <div class="mali kvadrat gore levo" data-index="0"></div>
+        <div class="mali kvadrat gore sredina" data-index="1"></div>
+        <div class="mali kvadrat gore desno" data-index="2"></div>
+        <div class="mali kvadrat centar levo" data-index="3"></div>
+        <div class="mali kvadrat centar sredina" data-index="4"></div>
+        <div class="mali kvadrat centar desno" data-index="5"></div>
+        <div class="mali kvadrat dole levo" data-index="6"></div>
+        <div class="mali kvadrat dole sredina" data-index="7"></div>
+        <div class="mali kvadrat dole desno" data-index="8"></div>
       </div>
-      <div class="veliki kvadrat gore desno">
-        <div class="mali kvadrat gore levo"></div>
-        <div class="mali kvadrat gore sredina"></div>
-        <div class="mali kvadrat gore desno"></div>
-        <div class="mali kvadrat centar levo"></div>
-        <div class="mali kvadrat centar sredina"></div>
-        <div class="mali kvadrat centar desno"></div>
-        <div class="mali kvadrat dole levo"></div>
-        <div class="mali kvadrat dole sredina"></div>
-        <div class="mali kvadrat dole desno"></div>
+      <div class="veliki kvadrat gore desno" data-index="2">
+        <div class="mali kvadrat gore levo" data-index="0"></div>
+        <div class="mali kvadrat gore sredina" data-index="1"></div>
+        <div class="mali kvadrat gore desno" data-index="2"></div>
+        <div class="mali kvadrat centar levo" data-index="3"></div>
+        <div class="mali kvadrat centar sredina" data-index="4"></div>
+        <div class="mali kvadrat centar desno" data-index="5"></div>
+        <div class="mali kvadrat dole levo" data-index="6"></div>
+        <div class="mali kvadrat dole sredina" data-index="7"></div>
+        <div class="mali kvadrat dole desno" data-index="8"></div>
       </div>
-      <div class="veliki kvadrat centar levo">
-        <div class="mali kvadrat gore levo"></div>
-        <div class="mali kvadrat gore sredina"></div>
-        <div class="mali kvadrat gore desno"></div>
-        <div class="mali kvadrat centar levo"></div>
-        <div class="mali kvadrat centar sredina"></div>
-        <div class="mali kvadrat centar desno"></div>
-        <div class="mali kvadrat dole levo"></div>
-        <div class="mali kvadrat dole sredina"></div>
-        <div class="mali kvadrat dole desno"></div>
+      <div class="veliki kvadrat centar levo" data-index="3">
+        <div class="mali kvadrat gore levo" data-index="0"></div>
+        <div class="mali kvadrat gore sredina" data-index="1"></div>
+        <div class="mali kvadrat gore desno" data-index="2"></div>
+        <div class="mali kvadrat centar levo" data-index="3"></div>
+        <div class="mali kvadrat centar sredina" data-index="4"></div>
+        <div class="mali kvadrat centar desno" data-index="5"></div>
+        <div class="mali kvadrat dole levo" data-index="6"></div>
+        <div class="mali kvadrat dole sredina" data-index="7"></div>
+        <div class="mali kvadrat dole desno" data-index="8"></div>
       </div>
-      <div class="veliki kvadrat centar sredina">
-        <div class="mali kvadrat gore levo"></div>
-        <div class="mali kvadrat gore sredina"></div>
-        <div class="mali kvadrat gore desno"></div>
-        <div class="mali kvadrat centar levo"></div>
-        <div class="mali kvadrat centar sredina"></div>
-        <div class="mali kvadrat centar desno"></div>
-        <div class="mali kvadrat dole levo"></div>
-        <div class="mali kvadrat dole sredina"></div>
-        <div class="mali kvadrat dole desno"></div>
+      <div class="veliki kvadrat centar sredina" data-index="4">
+        <div class="mali kvadrat gore levo" data-index="0"></div>
+        <div class="mali kvadrat gore sredina" data-index="1"></div>
+        <div class="mali kvadrat gore desno" data-index="2"></div>
+        <div class="mali kvadrat centar levo" data-index="3"></div>
+        <div class="mali kvadrat centar sredina" data-index="4"></div>
+        <div class="mali kvadrat centar desno" data-index="5"></div>
+        <div class="mali kvadrat dole levo" data-index="6"></div>
+        <div class="mali kvadrat dole sredina" data-index="7"></div>
+        <div class="mali kvadrat dole desno" data-index="8"></div>
       </div>
-      <div class="veliki kvadrat centar desno">
-        <div class="mali kvadrat gore levo"></div>
-        <div class="mali kvadrat gore sredina"></div>
-        <div class="mali kvadrat gore desno"></div>
-        <div class="mali kvadrat centar levo"></div>
-        <div class="mali kvadrat centar sredina"></div>
-        <div class="mali kvadrat centar desno"></div>
-        <div class="mali kvadrat dole levo"></div>
-        <div class="mali kvadrat dole sredina"></div>
-        <div class="mali kvadrat dole desno"></div>
+      <div class="veliki kvadrat centar desno" data-index="5">
+        <div class="mali kvadrat gore levo" data-index="0"></div>
+        <div class="mali kvadrat gore sredina" data-index="1"></div>
+        <div class="mali kvadrat gore desno" data-index="2"></div>
+        <div class="mali kvadrat centar levo" data-index="3"></div>
+        <div class="mali kvadrat centar sredina" data-index="4"></div>
+        <div class="mali kvadrat centar desno" data-index="5"></div>
+        <div class="mali kvadrat dole levo" data-index="6"></div>
+        <div class="mali kvadrat dole sredina" data-index="7"></div>
+        <div class="mali kvadrat dole desno" data-index="8"></div>
       </div>
-      <div class="veliki kvadrat dole levo">
-        <div class="mali kvadrat gore levo"></div>
-        <div class="mali kvadrat gore sredina"></div>
-        <div class="mali kvadrat gore desno"></div>
-        <div class="mali kvadrat centar levo"></div>
-        <div class="mali kvadrat centar sredina"></div>
-        <div class="mali kvadrat centar desno"></div>
-        <div class="mali kvadrat dole levo"></div>
-        <div class="mali kvadrat dole sredina"></div>
-        <div class="mali kvadrat dole desno"></div>
+      <div class="veliki kvadrat dole levo" data-index="6">
+        <div class="mali kvadrat gore levo" data-index="0"></div>
+        <div class="mali kvadrat gore sredina" data-index="1"></div>
+        <div class="mali kvadrat gore desno" data-index="2"></div>
+        <div class="mali kvadrat centar levo" data-index="3"></div>
+        <div class="mali kvadrat centar sredina" data-index="4"></div>
+        <div class="mali kvadrat centar desno" data-index="5"></div>
+        <div class="mali kvadrat dole levo" data-index="6"></div>
+        <div class="mali kvadrat dole sredina" data-index="7"></div>
+        <div class="mali kvadrat dole desno" data-index="8"></div>
       </div>
-      <div class="veliki kvadrat dole sredina">
-        <div class="mali kvadrat gore levo"></div>
-        <div class="mali kvadrat gore sredina"></div>
-        <div class="mali kvadrat gore desno"></div>
-        <div class="mali kvadrat centar levo"></div>
-        <div class="mali kvadrat centar sredina"></div>
-        <div class="mali kvadrat centar desno"></div>
-        <div class="mali kvadrat dole levo"></div>
-        <div class="mali kvadrat dole sredina"></div>
-        <div class="mali kvadrat dole desno"></div>
+      <div class="veliki kvadrat dole sredina" data-index="7">
+        <div class="mali kvadrat gore levo" data-index="0"></div>
+        <div class="mali kvadrat gore sredina" data-index="1"></div>
+        <div class="mali kvadrat gore desno" data-index="2"></div>
+        <div class="mali kvadrat centar levo" data-index="3"></div>
+        <div class="mali kvadrat centar sredina" data-index="4"></div>
+        <div class="mali kvadrat centar desno" data-index="5"></div>
+        <div class="mali kvadrat dole levo" data-index="6"></div>
+        <div class="mali kvadrat dole sredina" data-index="7"></div>
+        <div class="mali kvadrat dole desno" data-index="8"></div>
       </div>
-      <div class="veliki kvadrat dole desno">
-        <div class="mali kvadrat gore levo"></div>
-        <div class="mali kvadrat gore sredina"></div>
-        <div class="mali kvadrat gore desno"></div>
-        <div class="mali kvadrat centar levo"></div>
-        <div class="mali kvadrat centar sredina"></div>
-        <div class="mali kvadrat centar desno"></div>
-        <div class="mali kvadrat dole levo"></div>
-        <div class="mali kvadrat dole sredina"></div>
-        <div class="mali kvadrat dole desno"></div>
+      <div class="veliki kvadrat dole desno" data-index="8">
+        <div class="mali kvadrat gore levo" data-index="0"></div>
+        <div class="mali kvadrat gore sredina" data-index="1"></div>
+        <div class="mali kvadrat gore desno" data-index="2"></div>
+        <div class="mali kvadrat centar levo" data-index="3"></div>
+        <div class="mali kvadrat centar sredina" data-index="4"></div>
+        <div class="mali kvadrat centar desno" data-index="5"></div>
+        <div class="mali kvadrat dole levo" data-index="6"></div>
+        <div class="mali kvadrat dole sredina" data-index="7"></div>
+        <div class="mali kvadrat dole desno" data-index="8"></div>
       </div>
     </main>
+    <div id="moj-oblik"></div>
     <script src="app.js"></script>
   </body>
 </html>

@@ -26,7 +26,7 @@ body {
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
 }
 
@@ -104,7 +104,6 @@ body {
   transform: translate(-50%, -50%);
   border: var(--velicina) solid var(--oks-boja);
 }
-
 .veliki.kvadrat.oks::before {
   z-index: 1;
   border-width: calc(var(--velicina) * 2);
@@ -141,4 +140,60 @@ body {
 }
 .igrac-oks .potez-oks .mali.kvadrat:not(.iks, .oks):hover {
   background-color: #b9d4de;
+}
+
+nav {
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  gap: 0.5rem;
+  font-size: 3vh;
+}
+
+nav * {
+  height: 100%;
+}
+
+nav > label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav > label > input {
+  font-size: 90%;
+  text-align: center;
+}
+
+#qr-kod {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #80808080;
+}
+
+#qr-kod > img {
+  width: 90vmin;
+  height: 90vmin;
+}
+
+#moj-oblik {
+  position: relative;
+  width: 5vh;
+  height: 5vh;
+}
+
+#moj-oblik.iks::before,
+#moj-oblik.iks::after {
+  height: 1vh;
+}
+#moj-oblik.oks::before {
+  border-width: 1vh;
 }
